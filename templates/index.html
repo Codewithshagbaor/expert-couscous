@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div>
+    {% if messages %}
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    <hr>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <h1>Add a Student</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas doloribus blanditiis aliquam illum mollitia iusto consequuntur tempora, nesciunt perspiciatis</p>
+    <hr>
+    <form method="POST" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2>Academic Details</h2>
+      <input type="text" name="matric_number" id="" placeholder="Matric Number">
+      <select name="level" id="">
+        {% for l in level %}
+        <option>{{l.level}}</option>
+        {% endfor %}
+      </select>
+      <select name="course" id="">
+        {% for c in course %}
+        <option>{{c.name}}</option>
+        {% endfor %}
+      </select>
+      <select name="program" id="">
+        {% for p in program %}
+        <option>{{p.name}}</option>
+        {% endfor %}
+      </select><br><br>
+      <h2>Personal Details</h2>
+      <input type="text" name="surname" id="" placeholder="Surname">
+      <input type="text" name="middle_name" id="" placeholder="Middlename">
+      <input type="text" name="last_name" id="" placeholder="Lastname">
+      <input type="date" name="dob" id="">
+      <input type="checkbox" name="male" id="">Male
+      <input type="checkbox" name="female" id="">Female 
+      <select name="status" id="">
+        {% for s in status %}
+        <option>{{s.name}}</option>
+        {% endfor %}
+      </select><br><br>
+      <input type="email" name="email" id="" placeholder="Email">
+      <input type="text" name="phone_number" id="" placeholder="Phone Number">
+      <select name="country" id="">
+        {% for c in country %}
+        <option>{{c.name}}</option>
+        {% endfor %}
+      </select>
+      <input type="text" name="city" id="" placeholder="City">
+      <input type="text" name="place_of_birth" id="" placeholder="Place of birth">
+      <input type="text" name="nationality_at_birth" id="" placeholder="Nationality at Birth"><br><br>
+      <input type="text" name="address" id="" placeholder="Address">
+      <input type="number" name="postal_code" id="" placeholder="Postal Code"><br><br>
+      <h2>Files</h2>
+      <label>Passport</label><input type="file" name="passport"><br><br>
+      <button type="submit" class="button1">Submit</button>
+      <button type="reset" class="button7">Reset</button>
+    </form>
+  </div>
+{% endblock %}

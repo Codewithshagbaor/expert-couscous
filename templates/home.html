@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content  %}
+<div class="col-lg-8">
+  <div class="card shadow-sm">
+    <div class="card-header bg-transparent border-0">
+      <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Students</h3>
+    </div>
+    {% if lists %}
+    <div class="card-body pt-0">
+      {% for l in lists reversed %}
+      <table class="table table-bordered">
+        
+        <tr>
+          <th width="30%"><a href="{% url 'Student-View' l.uid %}">{{l.surname}} {{l.last_name}}</a></th>
+          <td width="2%">:</td>
+          <td><b>{{l.matric_number}}</b><br> {{c.status}}</td>
+          <td><a href="{% url 'Student-View' l.uid %}">View</a></td>
+        </tr>
+        
+      </table>
+      {% endfor %}
+    </div>
+    {% else %}
+    <h1>Haven't Apply</h1>
+    <a href="{% url 'index' %}">Add a Student</a>
+    {% endif %}
+  </div>
+{% endblock %}
